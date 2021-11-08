@@ -1,0 +1,136 @@
+<div [style.width]="'100%'">
+  <form *ngIf="!optionInput" [style.width]="'100%'">
+    <label class="inp" [style.width]="'100%'">
+
+
+      <div class="inp__icon">
+        <i *ngIf="fontAwesomeIcon" [class]="fontAwesomeIcon" [ngClass]="{'active': focus, 'errorState': errorState, 'awesomeIcon': true}"></i>
+      </div>
+
+      
+      <input
+        [value]="value"
+        [type]="type"
+        [autocomplete]="autoComplete"
+        (keyup)="receiveEvent($event)"
+        *ngIf="mask && mask.length > 1"
+        [mask]="mask"
+        [placeholder]="placeholder"
+        [ngClass]="{'active': focus, 'valid': isValidField, 'errorState': errorState}"
+        [pattern]="pattern"
+             required
+        [style.width]="'100%'"
+        (focus)="fieldFocus()"
+        (focusout)="fieldFocus()"
+        [disabled]="disabled"
+      >
+      <input
+        [value]="value"
+        [type]="type"
+        *ngIf="!mask"
+        maxlength="35"
+        [placeholder]="placeholder"
+        [ngClass]="{active: focus, 'valid': isValidField && !errorState, 'errorState': errorState}"
+        pattern=".{5,}"
+             required
+        [style.width]="'100%'"
+        (focus)="fieldFocus()"
+        (focusout)="fieldFocus()"
+        [disabled]="disabled"
+        (keyup)="receiveEvent($event)">
+      <svg  [style.width]="'100%'" height="18px" viewBox="0 0 280 18" class="border" preserveAspectRatio="none" [ngClass]="{'active': focus, 'errorState': errorState}">
+        <path d="M0,12 L223.166144,12 C217.241379,12 217.899687,12 225.141066,12 C236.003135,12 241.9279,12 249.827586,12 C257.727273,12 264.639498,12 274.514107,12 C281.097179,12 281.755486,12 276.489028,12"></path>
+      </svg>
+      <svg width="14px" height="12px" viewBox="0 0 14 12" class="check" [ngClass]="{'active': focus}">
+        <path d="M1 7 5.5 11 L13 1"></path>
+      </svg>
+      <svg width="44" height="44" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" stroke="#fff"  class='loading' [ngClass]="{'show': loading}">
+        <g fill="none" fill-rule="evenodd" stroke-width="2">
+            <circle cx="22" cy="22" r="1">
+                <animate attributeName="r"
+                    begin="0s" dur="1.8s"
+                    values="1; 20"
+                    calcMode="spline"
+                    keyTimes="0; 1"
+                    keySplines="0.165, 0.84, 0.44, 1"
+                    repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity"
+                    begin="0s" dur="1.8s"
+                    values="1; 0"
+                    calcMode="spline"
+                    keyTimes="0; 1"
+                    keySplines="0.3, 0.61, 0.355, 1"
+                    repeatCount="indefinite" />
+            </circle>
+            <circle cx="22" cy="22" r="1">
+                <animate attributeName="r"
+                    begin="-0.9s" dur="1.8s"
+                    values="1; 20"
+                    calcMode="spline"
+                    keyTimes="0; 1"
+                    keySplines="0.165, 0.84, 0.44, 1"
+                    repeatCount="indefinite" />
+                <animate attributeName="stroke-opacity"
+                    begin="-0.9s" dur="1.8s"
+                    values="1; 0"
+                    calcMode="spline"
+                    keyTimes="0; 1"
+                    keySplines="0.3, 0.61, 0.355, 1"
+                    repeatCount="indefinite" />
+            </circle>
+        </g>
+    </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" width="20" height="20" class="errorMark" [ngClass]="{'active': focus, 'errorState': errorState }" viewBox="0 0 20 30"><path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/></svg>
+    </label>
+  </form>
+  <form *ngIf="optionInput">
+    <label class="inp" [style.width]="'100%'">
+
+      <div class="inp__icon">
+        <i *ngIf="fontAwesomeIcon" [class]="fontAwesomeIcon" [ngClass]="{'active': focus, 'errorState': errorState, 'awesomeIcon': true}"></i>
+      </div>
+
+      <input  [value]="value"
+              [type]="type"
+              (keyup)="receiveEvent($event)"
+              *ngIf="mask && mask.length > 1"
+              [mask]="mask"
+              [placeholder]="placeholder"
+              [ngClass]="{'active': focus, 'errorState': errorState}"
+              [pattern]="pattern"
+              [disabled]="disabled"
+             required
+              [style.width] = "'100%'"
+              (focus)="fieldFocus()"
+      >
+
+      <input
+        [value]="value"
+        [type]="type"
+        *ngIf="!mask"
+        maxlength="35"
+        [placeholder]="placeholder"
+        [disabled]="disabled"
+        [ngClass]="{active: focus, 'errorState': errorState}"
+        pattern=".{5,}"
+             required
+        [style.width]="'100%'"
+        [style.margin]="margin"
+        (focus)="fieldFocus()"
+        (keyup)="receiveEvent($event)">
+
+      <div class="options" [style.width]="'100%'" [ngClass]="{active: focus}">
+          <div class="container" *ngFor="let option of options" (click)="setOptionValue(option)">
+            <div class="option">
+              {{option.option}}
+            </div>
+            <div class="divider"></div>
+          </div>
+      </div>
+      <svg [style.width]="'100%'" height="18px" viewBox="0 0 280 18" class="border" preserveAspectRatio="none" [ngClass]="{'active': focus, 'errorState': errorState, 'invalid': errorState}">
+        <path d="M0,12 L223.166144,12 C217.241379,12 217.899687,12 225.141066,12 C236.003135,12 241.9279,12 249.827586,12 C257.727273,12 264.639498,12 274.514107,12 C281.097179,12 281.755486,12 276.489028,12"></path>
+      </svg>
+      <i class="fa fa-caret-down" [ngClass]="{active: focus, 'errorState': errorState , 'caretDown': true}" aria-hidden="true"></i>
+    </label>
+  </form>
+</div>

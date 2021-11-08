@@ -1,0 +1,69 @@
+
+@font-face {
+    font-family: "Kiro-Regular";
+    src: local("Kiro-Regular"), url(./assets/fonts/Kiro/Kiro-Regular.otf) format("opentype");
+}
+
+@font-face {
+    font-family: 'Kiro-Light';
+    src: local("Kiro-Light"), url(./assets/fonts/Kiro/Kiro-Light.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Kiro-Bold-Italic";
+    src: local("Kiro-Bold-Italic"), url(./assets/fonts/Kiro/Kiro-Bold-Italic.otf) format("opentype");
+}
+
+@font-face {
+    font-family: "Kiro-Extra-Bold";
+    src: local("Kiro-Extra-Bold"), url(./assets/fonts/Kiro/Kiro-Extra-Bold.otf) format("opentype");
+}
+
+
+@font-face {
+    font-family: "WorkSans-Bold";
+    src: local("WorkSans-Bold"), url(./assets/fonts/WorkSans/WorkSans-Bold.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "WorkSans-Medium";
+    src: local("WorkSans-Medium"), url(./assets/fonts/WorkSans/WorkSans-Medium.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "WorkSans-Thin";
+    src: local("WorkSans-Thin"), url(./assets/fonts/WorkSans/WorkSans-Thin.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "WorkSans-Regular";
+    src: local("WorkSans-Regular"), url(./assets/fonts/WorkSans/WorkSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: "Poppins-SemiBold";
+    src: local("Poppins-SemiBold"), url(./assets/fonts/Poppins/Poppins-SemiBold.ttf) format("truetype");
+}
+
+
+body {
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #f8f8f8;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #2a93e9;
+    border-radius: 20px;
+    border: 1px solid #f8f8f8;
+  }
+
+  .ytp-chrome-top {
+      display: none!important;
+  }

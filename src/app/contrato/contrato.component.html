@@ -1,0 +1,2 @@
+<div *ngIf="carregando" class="loader"></div>
+<div #contrato [hidden]="carregando" [class.fadeIn]="!carregando" class="contrato" id="contrato"></div>

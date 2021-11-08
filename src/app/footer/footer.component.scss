@@ -1,0 +1,130 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(42, 147, 233);
+    color: #FFFFFF;
+    height: 25vh;
+    min-width: 335px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    height: 100%;
+    font-family: 'Kiro-Regular';
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.footer_copyright {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer_socialMedia {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.socialMedia_description {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+}
+
+.socialMedia_icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin-left: 50px;
+}
+
+.socialMedia_icons i {
+    font-size: 28px;
+    padding-right: 25px;
+    cursor: pointer;
+}
+
+.socialMedia_icons i:hover {
+    text-shadow:  0 0 25px #fff;
+}
+
+@media screen and (max-width: 900px) {
+
+    footer{
+        height: 250px;
+    }
+
+    .footer_content {
+        justify-content: center;
+        flex-direction: column-reverse;
+        max-width: 250px;
+    }
+    
+    .footer_socialMedia {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .socialMedia_description {
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .socialMedia_icons {
+        align-items: flex-start;
+        justify-content: space-evenly;
+        width: 200px;
+        margin-left: unset;
+    }
+
+    .socialMedia_icons i {
+        display: flex;
+        justify-content: center;
+        padding: unset;
+        text-align: center;
+    }
+
+    .footer_copyright {
+        margin-top: -60px;
+        text-align: center;
+    }
+
+    .footer_copyright p {
+        font-size: 16px;
+    }
+
+}
+
+@media screen and (min-width: 601px) and (max-width: 900px) {
+    .footer_content {
+        font-size: 24px;
+    }
+
+    .socialMedia_icons i {
+        font-size: 28px;
+    }
+
+    .footer_copyright p {
+        font-size: 18px;
+    }
+}

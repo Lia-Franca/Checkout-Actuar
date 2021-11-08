@@ -1,0 +1,46 @@
+
+    <div class="main">
+        <div class="main_fadeIn">
+            <!-- <div class="header_circle">
+                <img src="/assets/shoppint-cart.png">
+            </div> -->
+
+
+            <app-back-button
+            [routerLink]="['/home']"
+            [page]="'página inicial'"
+            ></app-back-button> 
+
+
+            <div class="main_content">
+                <div class="content_text">
+                    <div class="content_title">
+                        <h1> Digite seu <span class="shadow"></span> <span class="bold"> Email </span> </h1>
+                    </div>
+                    <div class="content_description">
+                        <p>Lorem Ipsum is simply dummy text printing.</p>
+                    </div>
+                </div>
+                <div class="content_input" [ngClass]="{'error' : isInvalidEmail}">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <!-- <input id='email' type="text" [(ngModel)]="email"> -->
+                    <input (keyup)="validateEmail($event)" id='email' type="text" [(ngModel)]="email">
+                    <i *ngIf="isValidEmail"  class="fa fa-check" aria-hidden="true"></i>
+                    <div class="input_errorIcon">
+                        <svg *ngIf="isInvalidEmail" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" width="20" height="20" class="errorMark" viewBox="0 0 20 30"><path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/></svg>
+                    </div>
+                </div>
+                <!-- <div class="content_button" [routerLink]="['/cadastro']"> -->
+                <div class="content_button" (click)="submit()">
+                    <button type="submit">Comprar agora</button>
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+

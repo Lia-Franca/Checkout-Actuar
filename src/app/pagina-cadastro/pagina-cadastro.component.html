@@ -1,0 +1,199 @@
+<div class="main">
+    <div class="main_fadeIn">
+
+        <app-back-button
+        [routerLink]="['/login']"
+        [page]="'página de login'"
+        ></app-back-button> 
+
+        <div class="main_content">
+            <div class="content">
+                <div class="main_header">
+                    <div class="header_text">
+                        <div class="header_title">
+                            <h1>Cadastre-se<span class="shadow"></span></h1>
+                        </div>
+                        <div class="header_description">
+                            <p>Lorem Ipsum is simply dummy text and printing advertising.</p>
+                        </div>
+                    </div>
+                    <div class="header_buttons">
+                        <div (click)="isCpf()" class="button_cpf" >
+                            <button [style.backgroundColor]="cpfBackground">CPF</button>
+                        </div>
+                        <span>&nbsp; OU &nbsp; </span>
+                        <div (click)="isCnpj()" class="button_cnpj">
+                            <button [style.backgroundColor]="cnpjBackground">CNPJ</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="main_body">
+                    <div class="body_text">
+                        <form>
+                            <div class="first_group">
+                                <div class="firstGroup_firstColumn">
+
+                                    <app-input 
+                                    [placeholder]="'Nome Completo'"
+                                    [fontAwesomeIcon]="'fa fa-user'"
+                                    [isValidField]="validateNome()"
+                                    (eventValue)="setData($event, 'nome')"
+                                    [value]="data.nome"
+                                    [eventNameField]="'Nome'"
+                                    (keyup)="verified()"
+                                    ></app-input>
+
+                                    <app-input 
+                                    [value]="data.emailInput"
+                                    (eventValue)="setData($event, 'emailInput')"
+                                    [placeholder]="'Endereço de Email'"
+                                    [fontAwesomeIcon]="'fa fa-envelope'"
+                                    [disabled]="blockAllFields"
+                                    ></app-input>
+
+                                </div>
+                                <div class="firstGroup_secondColumn">
+
+                                    <app-input 
+                                    [placeholder]="CPF_CNPJ"
+                                    [fontAwesomeIcon]="'fa fa-address-card'"
+                                    [mask]="'CPF_CNPJ'"
+                                    (keyup)="validateCpfCnpj()"
+                                    (keyup)="verified()"
+                                    [isValidField]="validCpf || validCnpj"
+                                    (eventValue)="setData($event, 'CpfCnpj')"
+                                    [eventNameField]="'CpfCnpj'"
+                                    ></app-input>
+
+                                    <app-input
+                                    [placeholder]="'Telefone'"
+                                    [fontAwesomeIcon]="'fa fa-phone'"
+                                    [mask]="'(00) 00000-0000||(00) 0000-0000'"
+                                    (keyup)="validateTelefoneCelular()"
+                                    (keyup)="verified()"
+                                    [isValidField]="validateTelefoneCelular()"
+                                    (eventValue)="setData($event, 'telefoneCelular')"
+                                    [eventNameField]="'Telefone'"
+                                    ></app-input>
+
+                                </div>
+                            </div>
+                            <div class="second_group">
+                                <div class="secondGroup_firstColumn">
+
+                                    <app-input
+                                    [placeholder]="'CEP'"
+                                    [fontAwesomeIcon]="'fa fa-map-marker'"
+                                    (keyup)="queryCep()"
+                                    [isValidField]="isValidCep && !loading"
+                                    (eventValue)="setData($event, 'cep')"
+                                    [value]="data.cep"
+                                    [mask]="'00000-000'"
+                                    [loading]="loading"
+                                    [eventNameField]="'CEP'"
+                                    ></app-input>
+                                    <app-input 
+                                    [placeholder]="'Número'"
+                                    [fontAwesomeIcon]="'fa fa-map-pin'"
+                                    [isValidField]="validateNumero()"
+                                    (eventValue)="setData($event, 'numero')"
+                                    (keyup)="validateNumero()"
+                                    (keyup)="verified()"
+                                    [value]="data.numero"
+                                    [eventNameField]="'Numero'"
+                                    ></app-input>
+
+                                </div>
+                                <div class="secondGroup_secondColumn">
+
+                                    <app-input 
+                                    [placeholder]="'Logradouro'"
+                                    [fontAwesomeIcon]="'fa fa-road'"
+                                    [isValidField]="validateLogradouro()"
+                                    (eventValue)="setData($event, 'logradouro')"
+                                    [value]="data.logradouro"
+                                    [eventNameField]="'Logradouro'"
+                                    (keyup)="verified()"
+                                    ></app-input>
+
+                                    <app-input 
+                                    [placeholder]="'Complemento'"
+                                    [fontAwesomeIcon]="'fa fa-flag'"
+                                    [isValidField]="validateComplemento()"
+                                    (eventValue)="setData($event, 'complemento')"
+                                    [value]="data.complemento"
+                                    (keyup)="verified()"
+                                    [eventNameField]="'Complemento'"
+                                    ></app-input>
+
+                                </div>
+                            </div>
+                            <div class="third_group">
+                                <div class="thirdGroup_firstElement">
+
+                                    <app-input 
+                                    [placeholder]="'Bairro'"
+                                    [fontAwesomeIcon]="'fa fa-map'"
+                                    [isValidField]="validateBairro()"
+                                    (keyup)="verified()"
+                                    (eventValue)="setData($event, 'bairro')"
+                                    [value]="data.bairro"
+                                    [eventNameField]="'Bairro'"
+                                    ></app-input>
+
+                                </div>
+                                <div class="thirdGroup_lastElements">
+
+                                    <div>
+                                    <app-input 
+                                    [optionInput]="true"
+                                    [fontAwesomeIcon]="'fa fa-location-arrow'"
+                                    [placeholder]="'UF'"
+                                    class="Form-control" id="uf" 
+                                    [isValidField]="validateUf()"
+                                    (eventValue)="setData($event, 'uf')"
+                                    [value]="data.uf"
+                                    [options]="options"
+                                    (eventOptionValue)="chosenUf($event)"
+                                    ></app-input>
+                                    </div>
+
+                                   <div>
+                                    <app-input 
+                                    [optionInput]="true"
+                                    [placeholder]="'Cidade'"
+                                    [fontAwesomeIcon]="'fa fa-globe'"
+                                    [isValidField]="validateCidade()"
+                                    (eventValue)="setData($event, 'cidade')"
+                                    (eventOptionValue)="chosenCity($event)"
+                                    [value]="data.cidade"
+                                    [options]="cities"
+                                    [disabled]="!validUf"
+                                    ></app-input>
+
+                                   </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="main_toggle">
+                    <div class="toggle_content">
+                        <label class="switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                        <div class="toggle_text">
+                            <p> Sim, eu aceito receber comunicações de acordo com meus interesses</p>
+                        </div>
+                    </div>
+                    <!-- <div class="toggle_button" [routerLink]="['/compra']" > -->
+                        <div class="toggle_button" (click)="finish()" >
+                        <button>Concluir Cadastro</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

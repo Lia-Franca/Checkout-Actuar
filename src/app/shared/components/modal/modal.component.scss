@@ -1,0 +1,107 @@
+section {
+  font-family: 'Kiro-Regular', sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(#000000, 0.3);
+  @supports (backdrop-filter: blur(2px)) {
+    backdrop-filter: blur(2px);
+  };
+  transition: ease 0.5s;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+
+    .modal {
+      margin-bottom: 0;
+    }
+
+  }
+
+  .modal {
+    width: 1000px;
+    background-color: #2196f3;
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: -60px;
+    transition: ease 0.7s;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+      height: 100%;
+
+      &__content {
+        height: 92%!important;
+      }
+      }
+
+    &__title {
+      width: 100%;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      flex-flow: row nowrap;
+      justify-content: center;
+
+      & p {
+        color: #FFFFFF;
+        padding: 0;
+        margin: 0 0 0 auto;
+        font-size: 18px;
+      }
+
+      & span {
+        margin-left: auto;
+
+        & svg {
+          width: 20px;
+          height: 20px;
+          fill: #FFFFFF;
+          margin: 5px 0 0 -25px;
+          cursor: pointer;
+        }
+
+      }
+
+    }
+
+    &__content {
+      background-color: white;
+      margin: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 600px;
+      padding: 0;
+    }
+  }
+  
+
+  app-credit-card {
+    margin-bottom: -50px;
+    opacity: 0;
+    visibility: hidden;
+
+    &open {
+      visibility: visible;
+      display: block;
+      opacity: 0;
+      margin-bottom: -50px;
+      transition: ease 0.7s;
+    }
+
+  }
+
+}
+
+.none {
+  display: none;
+}
+
+

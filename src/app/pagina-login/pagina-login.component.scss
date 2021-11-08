@@ -1,0 +1,249 @@
+// ===============================> MAIN <====================================
+.main {
+    display: flex;
+    background-color: #057bda;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+
+.main_fadeIn {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    animation: fadeIn ease-in 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+// ================================> MAIN_CONTENT <==================================
+
+.content_text {
+    color: #ffffff;
+    text-align: center;
+}
+
+.content_title h1{
+    font-family: 'Kiro-Regular';
+    font-size: 50px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+
+.shadow {
+    position: absolute;
+    background-color: #419fea;
+    height: 11px;
+    width: 124px;
+    border-radius: 10px;
+    margin-top: 45px;
+    z-index: -1;
+}
+
+.bold {
+    font-family: 'Kiro-Extra-Bold';
+}
+
+.content_description {
+    font-family: 'WorkSans-Regular';
+    font-size: 16px;
+    margin-top: -25px;
+    
+}
+
+.content_input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+    margin-top: 25px;
+}
+
+.error {
+    animation: inputError .5s ease;
+}
+
+@keyframes inputError {
+  20% {
+      transform: translateX( -15px );
+  }
+  40% {
+      transform: translateX( 15px );
+  }
+  60% {
+      transform: translateX( -15px );
+  }
+  80% {
+      transform: translateX( 15px );
+  }
+  100% {
+      transform: translateX( 0px );
+  }
+}
+
+
+.content_input i {
+    position: absolute;
+    z-index: 1;
+}
+
+
+.content_input input {
+    font-family: "WorkSans-Regular";
+    color: #ffffff ;
+    background-color: #057bda;
+    height: 60px;
+    padding-left: 60px;
+    border-radius: 100px;
+    border: 2.5px solid white ;
+    font-size: 14px;
+    position: relative;
+    width: 300px;
+    padding-right: 60px;
+}
+
+.content_input:focus, input:focus {
+    outline: none;
+}
+
+
+.content_input i:first-of-type {
+    left: 35px;
+    color: #a3d6ff;
+    font-size: 14px;
+    width: 15px;
+}
+
+.content_input i:last-of-type {
+    right: 35px;
+    color: #97d1ff;
+}
+
+.input_errorIcon {
+    position: absolute;
+    right: 38px;
+    margin-top: 10px;
+    fill: #97d1ff;
+}
+  
+
+.content_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.content_button button {
+    font-family: "Poppins-SemiBold";
+    color: #057bda;
+    background-color: #fefefe;
+    padding: 19px 70px;
+    border-radius: 100px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.content_button button:hover {
+    box-shadow:  0 0 15px rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+.content_button i {
+    position: absolute;
+    color: #057bda;
+    right: 100px;
+    top: 43px;
+    font-size: 20px;
+    z-index: 2;
+}
+
+// ====================================> END OF MAIN_CONTENT <==================================
+
+// ====================================> END OF MAIN ===========================================
+
+// ====================================> MOBILE ================================================
+@media screen and (max-width: 321px) { 
+    .main {
+        min-width: 335px!important;
+        min-height: 82vh!important;
+    }
+}
+
+@media screen and (max-width: 600px) { 
+
+.main {
+    min-height: 70vh;
+    height: unset;
+}
+
+.main_fadeIn {
+    max-width: 300px;
+    width: 100%;
+    height: 100%;
+}
+
+.content_title h1 {
+    font-size: 30px;
+}
+
+.shadow {
+    height: 8px;
+    width: 76px;
+    margin-top: 27px;
+}
+
+.content_description {
+    font-size: 14px;
+    margin-top: -12px;
+}
+
+.content_input input {
+    width: 225px;
+    height: 50px;
+    border: 3px solid white;
+}
+
+.content_input i:first-of-type {
+    left: 30px;
+}
+
+.content_input i:last-of-type {
+    right: 30px;
+}
+
+.content_button button {
+    padding: unset;
+    height: 58px;
+    width: 293px;
+}
+
+.content_button i {
+    display: none;
+    right: unset;
+    margin-right: -210px;
+}
+}
+
+
+@media screen and (height: 1024px) { 
+    .main {
+        height: 76vh;
+    }
+}
+
+
+// ==========================================> END OF MOBILE =============================================

@@ -1,0 +1,514 @@
+// ===============================> MAIN <====================================
+
+.main {
+    display: flex;
+    background-color: #057bda;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+}
+
+.main_fadeIn {
+    max-width: 1000px;
+    margin: 0px 100px 0px 100px;
+    width: 100%;
+    animation: fadeIn ease-in 1s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+// ================================> MAIN_CONTENT <==================================
+
+// ================================> MAIN_HEADER <==================================
+
+.main_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_text { 
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.header_title h1 {
+    font-family: 'Kiro-Regular';
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: lighter;
+    letter-spacing: 2px;
+}
+
+.header_description p {
+    font-family: 'WorkSans-Regular';
+    font-weight: lighter;
+    font-size: 16px;
+    color: #ffffff;
+    margin-top: -20px;
+}
+
+.shadow {
+    position: absolute;
+    background-color: #419fea;
+    height: 11px;
+    width: 260px;
+    border-radius: 10px;
+    margin-top: 45px;
+    margin-left: -258px ;
+    z-index: -1;
+}
+
+
+.header_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    position: relative;
+    margin-top: 20px;
+}
+
+
+
+.header_buttons button {
+    font-family: "WorkSans-Regular";
+    color: #ffffff ;
+    background-color: #057bda;
+    height: 60px;
+    border-radius: 100px;
+    border: 2.5px solid white ;
+    font-size: 14px;
+    position: relative;
+    width: 130px;
+    margin: 0px 20px 0px 20px;
+    cursor: pointer;
+}
+
+.header_buttons button:focus {
+    outline: none;
+}
+
+.chosenButton {
+    background-color: #46a3ee!important;
+}
+
+
+.header_buttons span {
+    color: #ffffff;
+    font-family: 'WorkSans-Regular';
+}
+
+// ================================> END OF MAIN_HEADER <==================================
+
+// =====================================> MAIN_BODY <======================================
+
+.main_body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #46a3ee;
+    height: 300px;
+    border-radius: 25px;
+    width: 100%;
+    height: 350px;
+}
+
+.body_text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 50px;
+    margin-top: -20px;
+}
+
+.first_group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.first_group div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.second_group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.second_group div {
+    display: flex;
+    flex-direction: column;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.secondGroup_firstColumn {
+    width: 300px;
+}
+
+.secondGroup_secondColumn {
+    width: 100%;
+}
+
+.third_group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.thirdGroup_firstElement {
+    width: 280px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.thirdGroup_lastElements {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.thirdGroup_lastElements div:first-of-type {
+    width: 250px;
+}
+
+.thirdGroup_lastElements div {
+    width: 100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+// =====================================> END OF MAIN_BODY <======================================
+
+// =======================================> MAIN_TOGGLE <=========================================
+.main_toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 50px;
+    width: 100%;
+    position: relative;
+}
+
+.switch {
+    display: inline-block;
+    height: 25px;
+    position: relative;
+    width: 60px;
+  }
+  
+  .switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    height: 26px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 18px;
+    left: 6px;
+    position: absolute;
+    transition: .4s;
+    width: 18px;
+  }
+  
+  input:checked + .slider {
+    background-color: #66b9fb;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(30px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+    width: 60px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  .main_toggle {
+    margin-bottom: 60px;
+  }
+  .toggle_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .toggle_text {
+      font-family: "WorkSans-Regular";
+      color: #ffffff;
+      font-size: 16px;
+      margin-left: 10px;
+  }
+
+  .toggle_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .toggle_button button{
+    font-family: "Poppins-SemiBold";
+    color: #057bda;
+    background-color: #fefefe;
+    padding: 21px 51px;
+    border-radius: 100px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+}
+
+.toggle_button button:hover {
+    box-shadow:  0 0 15px rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+// ===============================> END OF MAIN_TOGGLE <=============================
+
+// ===============================> END OF MAIN_CONTENT <============================
+
+// ===============================> END OF MAIN <====================================
+
+// ======================================> MOBILE =================================================
+@media screen and (max-width: 336px) {
+    .main {
+        min-width: 335px;
+    }
+}
+
+@media screen and (min-width: 971px) and (max-width: 1357px) {
+    .main_header {
+        margin: 0px 20px 0px 20px;
+    }
+
+}
+
+@media screen and (max-width: 970px) { 
+
+    .main_fadeIn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 600px;
+    }
+
+    .main_content {
+        flex-direction: column;
+        margin-top: 100px;
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .main_header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .header_title h1 {
+        font-size: 30px;
+    }
+
+    .shadow {
+        height: 8px;
+        width: 165px;
+        margin-top: 26px;
+        margin-left: -165px;
+    }
+
+    .header_description p {
+        font-size: 13px;
+        margin-top: -10px;
+    }
+
+    .header_text {
+        margin-bottom: 0px;
+    }
+
+    .header_buttons {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    .header_buttons button {
+        margin: 0px 10px 0px 10px;
+    }
+
+    .header_buttons span {
+        font-size: 15px;
+    }
+    
+    .main_body {
+        flex-direction: column;
+        justify-content: unset;
+        align-items: center;
+        height: 450px;
+        max-width: 100%;
+        margin: 0px;
+    }
+    
+    .body_text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 90%;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scroll-margin: 20px;
+        padding: unset;
+    }
+
+    form {
+        width: 100%;
+        height: 100%;
+    }
+
+    .body_text::-webkit-scrollbar {
+        width: 5px; 
+      }
+      
+    .body_text::-webkit-scrollbar-track {
+        background: #5eabeb;
+        border-radius: 100px;
+      }
+      
+    .body_text::-webkit-scrollbar-thumb {
+        background-color: #92D2F5;
+        border-radius: 100px;
+      }  
+
+      .first_group, .second_group, .third_group, .thirdGroup_lastElements {
+          flex-direction: column;
+          padding-left: 20px!important;
+          padding-right: 20px!important;
+          width: 100%;
+      }
+    
+    .secondGroup_firstColumn, .thirdGroup_firstElement, .thirdGroup_lastElements div {
+        width: 100%!important;
+        padding: unset;
+    }
+
+    .first_group, .second_group, .third_group {
+        box-sizing: border-box;
+    }
+
+
+    .toggle_button button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: unset;
+        height: 60px!important;
+        width: 300px;
+    }
+
+    .main_toggle {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .toggle_content {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .switch {
+        width: 55%;
+    }
+
+
+    
+}
+
+// ==========================================> IPAD ======================================================
+@media screen and (min-width: 550px) and (max-width: 970px){
+
+    .header_title h1 {
+        font-size: 40px;
+    }
+
+    .shadow {
+        width: 212px;
+        margin-top: 36px;
+        margin-left: -211px;
+    }
+}
+
+
+
+@media screen and (min-width: 750px) and (max-width: 1093px){ 
+
+    .toggle_content {
+        justify-content: center;
+        flex-direction: row;
+        max-width: 600px;
+    }
+
+    .main_toggle {
+        flex-direction: row;
+        margin-top: 10px;
+    }
+
+}
+// ======================================> END OF IPAD ===================================================
+// ==========================================> END OF MOBILE =============================================

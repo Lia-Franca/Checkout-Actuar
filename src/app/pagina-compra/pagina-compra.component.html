@@ -1,0 +1,128 @@
+<app-modal
+[modalOpenState]="modalContractState"
+(modalClosedAndSigned)="closeContractModalAndOpenCreditCardModal()"
+(closedModal)="setModalContractState()"
+></app-modal>
+<app-credit-card
+[modalOpenState]="modalCreditCardState"
+
+></app-credit-card>
+
+<div class="main">
+    <div class="main_fadeIn">
+
+        <app-back-button
+        [routerLink]="['/cadastro']"
+        [page]="'página de cadastro'"
+        ></app-back-button> 
+
+        <div class="main_content">
+            <div class="main_header">
+                <div class="header_title">
+                    <h1>Escolha os <span>Produtos</span><span class="shadow"></span></h1>
+                </div>
+                <div class="header_description">
+                    <p>Lorem Ipsum is simply dummy text advertising.</p>
+                </div>
+            </div>
+            <div class="main_body">
+                <div class="body_content">
+                    <div class="content_text">
+                        <div class="line" [ngClass]="{'selected': product.checked}" *ngFor="let product of products; let i = index"  (click)="markOptionChecked(i, $event)">
+                            <div class="line_description">
+                                <p>{{ product.description }}</p>
+                            </div>
+                            <div class="price">
+                                <div class="value">
+                                    <p> {{ product.price | currency:'BRL' }}</p>
+                                </div>
+                                <div class="check">
+                                    <label class="price_check">
+                                        <input type="checkbox" [(ngModel)]="product.checked" (click)="markOptionChecked(i, $event)">
+                                        <span class="checkmark" ></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content_align" >
+                        <div class="content_payment" >
+                            <div class="payment_text" >
+                                <div class="payment_title">
+                                    <h3>Meio de Pagamento</h3>
+                                </div>
+                                <div class="payment_option" *ngFor="let payment of payments; let i = index" (click)="paymentChecked(i, $event)">
+                                    <div class="payment_check">
+                                        <label class="price_check">
+                                            <input type="checkbox" [(ngModel)]="payment.checked" (click)="paymentChecked(i, $event)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="payment_icon">
+                                        <i  [class]="payment.class" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="payment_description" [class]="payment.descriptionClass">
+                                        <p>{{ payment.description }}</p>
+                                    </div>
+                                </div>
+                                <div class="payment_select">
+                                    <div class="payment_conditions custom-select"(click)="toggleShow()"  (focusout)="toggleShow()"  >
+                                        <p > {{ selectedOption }}</p>
+                                        <div class="payment_icon">
+                                            <i [ngClass]="{'turnIcon': isShown }" class="fa fa-caret-down" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="show" *ngIf="isShown" id="divshow"  >
+                                        <div class="show_options">
+                                            <div class="options_content" *ngFor="let item of options; let i = index" (click)="chosenOption(i)" >
+                                                <p > {{ item.option }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contentButtons_align">
+                          <div class="content_buttons">
+                              <div class="coupon">
+                                <div class="input_coupon" [ngClass]="{'error' : isInvalidCoupon}">
+                                    <div class="coupon_icon">
+                                        <i class="fa fa-ticket" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="coupon_title">
+                                        <p>CUPOM:</p>
+                                        <input [attr.disabled]="isValidCoupon? true : null" (keyup)="validateCoupon($event)" type="text" placeholder="99OFF">
+                                        <i *ngIf="isValidCoupon"  class="fa fa-check isValid" aria-hidden="true"></i>
+                                        <div class="input_errorIcon">
+                                            <svg *ngIf="isInvalidCoupon" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" width="20" height="20" class="errorMark" viewBox="0 0 20 30"><path d="M12 11.293l10.293-10.293.707.707-10.293 10.293 10.293 10.293-.707.707-10.293-10.293-10.293 10.293-.707-.707 10.293-10.293-10.293-10.293.707-.707 10.293 10.293z"/></svg>
+                                        </div>
+                                    </div>
+                                    <div class="coupon_submit">
+                                        <button (click)="submit()">
+                                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="button_buy" (click)="setModalContractState()" >
+                                <button>
+                                    <div class="align">
+                                        <div class="button_text">
+                                            <p>Finalizar Compra</p> 
+                                        </div>
+                                        <div class="button_icon">
+                                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
