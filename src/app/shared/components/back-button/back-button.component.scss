@@ -12,6 +12,7 @@
     top: 85px;
     z-index: 10;
     cursor: pointer;
+    box-shadow: 0 3px 6px #00000029;
 }
 
 .header_smallerCircle i {
@@ -32,6 +33,7 @@
     top: 70px;
     z-index: 1;
     cursor: pointer;
+    box-shadow: 0 3px 6px #00000029;
 }
 
 .tooltip {
@@ -53,6 +55,7 @@
     top: 25px;
     z-index: 3;
     cursor: pointer;
+    box-shadow: 0 3px 6px #00000029;
 }
 
 .tooltip:hover .header_infoBalloon {

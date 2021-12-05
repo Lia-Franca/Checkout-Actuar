@@ -16,10 +16,11 @@ export class InputComponent implements OnInit, AfterViewInit {
 @Input() calendar: boolean = false;
 @Input() maskedField: boolean = false;
 @Input() mask: string;
+@Input() thousandSeparator: string;
 @Input() pattern: string = '';
 @Input() optionInput: boolean = false;
 @Input() options: any[] = [];
-@Input() value: string = '';
+@Input() value: string | number = '';
 @Input() margin: string = '';
 @Input() isValidField: boolean = false;
 @Input() autoComplete: string = '';

@@ -2,11 +2,11 @@ import { Component, ElementRef, OnInit, ViewChild, AfterViewInit, Renderer2, Eve
 import { fromEvent } from 'rxjs';
 
 @Component({
-  selector: 'app-modal',
-  templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  selector: 'app-modal-contrato',
+  templateUrl: './modal-contrato.component.html',
+  styleUrls: ['./modal-contrato.component.scss']
 })
-export class ModalComponent implements OnInit, AfterViewInit {
+export class ModalContratoComponent implements OnInit, AfterViewInit {
 
   @ViewChild('close') closeModal: ElementRef;
   @ViewChild('modal') modal: ElementRef;

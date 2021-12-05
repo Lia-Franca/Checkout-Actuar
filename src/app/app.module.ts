@@ -21,10 +21,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ModalComponent } from './shared/components/modal/modal.component';
+import { ModalContratoComponent } from './shared/components/modal/modal-contrato.component';
 import { BackButtonComponent } from './shared/components/back-button/back-button.component';
 import { SwiperModule } from 'swiper/angular';
-import { NovoProdutoComponent } from './novo-produto/novo-produto.component';
+import { GerenciadorComponent } from './gerenciador/gerenciador.component';
+import { GerenciadorProdutosComponent } from './gerenciador/gerenciador-produtos/gerenciador-produtos.component';
+import { GerenciadorCuponsComponent } from './gerenciador/gerenciador-cupons/gerenciador-cupons.component';
+import { GerenciadorCondicoesPagamentoComponent } from './gerenciador/gerenciador-condicoes-pagamento/gerenciador-condicoes-pagamento.component';
+import { GerenciadorRegistrosComponent } from './gerenciador/gerenciador-registros/gerenciador-registros.component';
 
 
 
@@ -43,9 +47,13 @@ const routes: Routes = [];
     PaginaCadastroComponent,
     CreditCardComponent,
     InputComponent,
-    ModalComponent,
+    ModalContratoComponent,
     BackButtonComponent,
-    NovoProdutoComponent,
+    GerenciadorComponent,
+    GerenciadorProdutosComponent,
+    GerenciadorCuponsComponent,
+    GerenciadorCondicoesPagamentoComponent,
+    GerenciadorRegistrosComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'pagina-checkout' }),

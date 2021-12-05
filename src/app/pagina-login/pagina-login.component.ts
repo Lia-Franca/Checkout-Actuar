@@ -1,7 +1,6 @@
 import { Router, NavigationStart } from '@angular/router';
 import { isPlatformServer } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { Pages } from '../shared/components/back-button/page'
 
 
 @Component({

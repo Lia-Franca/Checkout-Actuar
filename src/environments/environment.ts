@@ -5,6 +5,7 @@ export const environment = {
 export const API = {
   apiClickSign: 'https://sandbox.clicksign.com',
   proxyClickSign: 'http://localhost:4200/proxyclicksign',
+  base: 'https://tst.actuar.net'
 };
 
 export const URL_CONTRATO_PDF = 'http://localhost:4200/assets/pdf/contrato.pdf';

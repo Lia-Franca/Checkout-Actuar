@@ -1,0 +1,147 @@
+<div class="progress-bar" style="--duration:5000ms;" [style.display]="progressBarDisplay" [style.visibility]="progressBarVisibility" [ngClass]="{'--success': typeOfAlertMessage ===  'sucesso', '--error': typeOfAlertMessage === 'error'}">
+    <div class="alertMessage">
+        <div class="alertMessage__box" [ngClass]="{'success': typeOfAlertMessage ===  'sucesso', 'error': typeOfAlertMessage === 'error', 'show': isOpenAlert }">
+            <figure>
+                <svg  *ngIf="typeOfAlertMessage === 'error' " class="errorIcon" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+                    viewBox="0 0 52 52" xml:space="preserve">
+                    <g>
+                    <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26
+                        S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z"/>
+                    <path d="M35.707,16.293c-0.391-0.391-1.023-0.391-1.414,0L26,24.586l-8.293-8.293c-0.391-0.391-1.023-0.391-1.414,0
+                        s-0.391,1.023,0,1.414L24.586,26l-8.293,8.293c-0.391,0.391-0.391,1.023,0,1.414C16.488,35.902,16.744,36,17,36
+                        s0.512-0.098,0.707-0.293L26,27.414l8.293,8.293C34.488,35.902,34.744,36,35,36s0.512-0.098,0.707-0.293
+                        c0.391-0.391,0.391-1.023,0-1.414L27.414,26l8.293-8.293C36.098,17.316,36.098,16.684,35.707,16.293z"/>
+                    </g>
+                </svg>
+                <svg *ngIf="typeOfAlertMessage === 'sucesso'"  class="successIcon" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+                    viewBox="0 0 52 52" xml:space="preserve">
+                    <g>
+                    <path d="M26,0C11.664,0,0,11.663,0,26s11.664,26,26,26s26-11.663,26-26S40.336,0,26,0z M26,50C12.767,50,2,39.233,2,26
+                        S12.767,2,26,2s24,10.767,24,24S39.233,50,26,50z"/>
+                    <path d="M38.252,15.336l-15.369,17.29l-9.259-7.407c-0.43-0.345-1.061-0.274-1.405,0.156c-0.345,0.432-0.275,1.061,0.156,1.406
+                        l10,8C22.559,34.928,22.78,35,23,35c0.276,0,0.551-0.114,0.748-0.336l16-18c0.367-0.412,0.33-1.045-0.083-1.411
+                        C39.251,14.885,38.62,14.922,38.252,15.336z"/>
+                    </g>
+                </svg>
+            </figure>
+            <span>{{textAlertMessage}}</span>
+        </div>
+    </div>
+</div>
+
+<div class="modal-editar-cupom" [ngClass]="{'show': isOpenModal}">
+    <div class="modal-editar-cupom__content">
+        <div class="modal-editar-cupom__content__title">
+          <div>
+            {{isEdit ? 'Editando Cupom' : 'Novo Cupom'}}
+          </div>
+          <div class="modal-editar-cupom__close" (click)="toggleModal()">
+            +
+          </div>
+        </div>
+        <div class="modal-editar-cupom__content__coupon">
+          <app-input
+          [fontAwesomeIcon]="'fa fa-tag'"
+          [placeholder]="'Nome do cupom'"
+          (eventValue)="setData($event, 'name')"
+          (keyup)="registerCoupon()"
+          [value]="data.name"
+          [eventNameField]="'Coupon'"
+          ></app-input>
+          <app-input
+          [fontAwesomeIcon]="'fa fa-usd'"
+          [placeholder]="'Valor do desconto'"
+          (keyup)="registerCoupon()"
+          (eventValue)="setData($event, 'discount')"
+          [value]="data.discount"
+          [eventNameField]="'Discount'"
+          [maskedField]="true"
+          [mask]="'separator.2'"
+          [thousandSeparator]="','"
+          ></app-input>
+        </div>
+        <div class="modal-editar-cupom__content__buttons">
+          <div id="result"></div>
+          <button (click)="removeProduct()" class="modal-editar-cupom__button">
+            Excluir
+          </button>
+          <button (click)="saveChanges()" class="modal-editar-cupom__button">
+            Salvar
+          </button>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="main__fadeIn">
+        <div class="tooltip" (click)="openModal()">
+            <div class="tooltip_biggerCircle">
+                <div class="tooltip_smallerCircle"></div>
+                <div class="tooltip_infoBalloon tooltiptext">
+                    <p>Adicionar novo cupom</p>
+                </div>
+            </div>
+        </div>
+        
+        <div *ngIf="coupons.length === 0" class="main__fadeIn_loading">
+            <svg preserveAspectRatio="none" version="1.1" id="L5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 107 107" enable-background="new 0 0 0 0" xml:space="preserve">
+                <circle stroke="none" cx="78" cy="50" r="6">
+                    <animateTransform 
+                    attributeName="transform" 
+                    dur="1s" 
+                    type="translate" 
+                    values="0 5 ; 0 -5; 0 5" 
+                    repeatCount="indefinite" 
+                    begin="0.3"/>
+                </circle>
+                <circle  stroke="none" cx="30" cy="50" r="6">
+                    <animateTransform 
+                    attributeName="transform" 
+                    dur="1s" 
+                    type="translate" 
+                    values="0 15 ; 0 -15; 0 15" 
+                    repeatCount="indefinite" 
+                    begin="0.1"/>
+                </circle>
+                <circle stroke="none" cx="54" cy="50" r="6">
+                    <animateTransform 
+                    attributeName="transform" 
+                    dur="1s" 
+                    type="translate" 
+                    values="0 10 ; 0 -10; 0 10" 
+                    repeatCount="indefinite" 
+                    begin="0.2"/>
+                </circle>
+            </svg>
+        </div>
+        
+        
+        <div class="content">
+            <div class="content__header">
+                <div class="content__header_title">
+                    <h1>Gerenciador de <span>Cupons</span><span></span></h1>
+                </div>
+                <div class="content__header_description">
+                    <p>Escolha um cupom para editar, excluir, ou cadastre um novo.</p>
+                </div>
+            </div>
+            <div class="line__align">
+                <div class="line" [ngClass]="{'selected': coupon.checked}"  *ngFor="let coupon of coupons; let i = index" (click)="markOptionChecked(i, $event)" >
+                    <div class="line__description">
+                        <p>{{ coupon.name }}</p>
+                    </div>
+                    <div class="line__price">
+            
+                    <div class="line__price_value">
+                        <p> {{ coupon.discount | currency:'BRL' }}</p>
+                    </div>
+                    <label>
+                        <input type="checkbox" [(ngModel)]="coupon.checked" (click)="markOptionChecked(i, $event)">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

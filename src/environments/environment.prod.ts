@@ -5,6 +5,7 @@ export const environment = {
 export const API = {
   apiClickSign: 'https://app.clicksign.com',
   proxyClickSign: 'http://localhost:4200/proxyclicksign',
+  base: 'FALTA API'
 };
 
 export const URL_CONTRATO_PDF = 'http://localhost:4200/assets/pdf/contrato.pdf';

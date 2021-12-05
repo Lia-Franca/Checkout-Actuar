@@ -7,7 +7,7 @@
         <i *ngIf="fontAwesomeIcon" [class]="fontAwesomeIcon" [ngClass]="{'active': focus, 'errorState': errorState, 'awesomeIcon': true}"></i>
       </div>
 
-      
+
       <input
         [value]="value"
         [type]="type"
@@ -15,6 +15,7 @@
         (keyup)="receiveEvent($event)"
         *ngIf="mask && mask.length > 1"
         [mask]="mask"
+        [thousandSeparator]="thousandSeparator"
         [placeholder]="placeholder"
         [ngClass]="{'active': focus, 'valid': isValidField, 'errorState': errorState}"
         [pattern]="pattern"

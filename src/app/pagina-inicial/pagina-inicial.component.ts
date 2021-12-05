@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Swiper from 'swiper';
 
 
 import SwiperCore, { Pagination } from 'swiper';
@@ -27,10 +26,8 @@ export class PaginaInicialComponent implements OnInit {
   public footerContentDisplay = '';
   public paginaLoginDisplay = '';
   public carouselBottom = '';
-
   
   
-
   constructor(private router: Router) { }
 
   navigateToLogin() {
@@ -38,29 +35,8 @@ export class PaginaInicialComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      direction: 'vertical',
-      loop: true,
-    
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    });
-  }
 
+  }
 
   comprarAgora(): void {
     this.botaoComprarAgoraAtivado = false;
@@ -74,41 +50,38 @@ export class PaginaInicialComponent implements OnInit {
       behavior: 'smooth' 
     })
 
-
-
-
-        if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
-          setTimeout(() => {
-            if (window.screen.width > 600) {
-              this.wrap2Bottom = "18px";
-              this.wrap2Right = "8px";
-              this.footerBottom = "100px";
-            }
-            this.classFooterBackground = 'animatedWaves';
-            this.classFooter = 'animated';
-            this.footerPosition = "fixed";
-            this.footerBottom = "138px";
-            this.footerBackgroundHeight = "100%";
-            this.bodyLineszIndex = "0";
-            this.classFooterContent = "footerFadeOut";
-            this.carouselBottom = "35px"; 
-            }, 300);
-        } else {
-          if (window.screen.width > 600) {
-            this.wrap2Bottom = "18px";
-            this.wrap2Right = "8px";
-            this.footerBottom = "100px";
-          }
-          this.classFooterBackground = 'animatedWaves';
-          this.classFooter = 'animated';
-          this.footerPosition = "fixed";
-          this.footerBottom = "138px";
-          this.footerBackgroundHeight = "100%";
-          this.bodyLineszIndex = "0";
-          this.classFooterContent = "footerFadeOut";
-          this.carouselBottom = "35px"; 
+    if ((window.innerHeight + window.scrollY) < document.body.offsetHeight) {
+      setTimeout(() => {
+        if (window.screen.width > 600) {
+          this.wrap2Bottom = "18px";
+          this.wrap2Right = "8px";
+          this.footerBottom = "100px";
         }
-   
+        this.classFooterBackground = 'animatedWaves';
+        this.classFooter = 'animated';
+        this.footerPosition = "fixed";
+        this.footerBottom = "138px";
+        this.footerBackgroundHeight = "100%";
+        this.bodyLineszIndex = "0";
+        this.classFooterContent = "footerFadeOut";
+        this.carouselBottom = "35px"; 
+        }, 300);
+    } else {
+      if (window.screen.width > 600) {
+        this.wrap2Bottom = "18px";
+        this.wrap2Right = "8px";
+        this.footerBottom = "100px";
+      }
+      this.classFooterBackground = 'animatedWaves';
+      this.classFooter = 'animated';
+      this.footerPosition = "fixed";
+      this.footerBottom = "138px";
+      this.footerBackgroundHeight = "100%";
+      this.bodyLineszIndex = "0";
+      this.classFooterContent = "footerFadeOut";
+      this.carouselBottom = "35px"; 
+    }
+ 
     setTimeout(()=> {
       this.footerContentDisplay = "none";
     }, 3000)
@@ -119,8 +92,6 @@ export class PaginaInicialComponent implements OnInit {
       this.paginaLoginDisplay = "flex";
       document.documentElement.style.overflowY = 'visible';
     }, 2000);
-
-    
   }
 
 
@@ -137,6 +108,4 @@ export class PaginaInicialComponent implements OnInit {
       behavior: 'smooth' 
     })
   }
-
-
 }

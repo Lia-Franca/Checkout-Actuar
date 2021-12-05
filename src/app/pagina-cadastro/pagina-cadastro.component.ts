@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BuscaCepService } from '../busca-cep.service';
+import { BuscaCepService } from '../shared/services/busca-cep.service';
 import { CadastroData } from '../shared/interfaces/cadastro.interface';
 import { EventEmitterService } from "../shared/services/event-emitter.service";
 
@@ -20,7 +20,7 @@ export class PaginaCadastroComponent implements OnInit{
   public autoComplete: string;
   public cities: any[] = [];
   public id: string = '';
-  public data: CadastroData = { 
+  public data: CadastroData = {
     CpfCnpj: '',
     telefoneCelular: '',
     cep: '',
@@ -49,7 +49,7 @@ export class PaginaCadastroComponent implements OnInit{
   public validLogradouro: boolean = false;
   public validBairro: boolean = false;
   public validUf: boolean = false;
-  
+
   public loading = false;
   public regexCep = new RegExp(/[0-9]{5}-[0-9]{3}/);
   public regexCpf = new RegExp(/^\d{3}\.\d{3}\.\d{3}\-\d{2}$/)
@@ -107,20 +107,20 @@ export class PaginaCadastroComponent implements OnInit{
           this.validateUf();
           this.validateCidade();
         }
-      }, 
+      },
       (invalidCep) => {
-       console.log(invalidCep.erro) 
-      } 
+       console.log(invalidCep.erro)
+      }
       )
-    } 
+    }
   }
 
- 
+
 
 
   queryCity() {
     this.cepService.searchUf(this.id).subscribe((data2:any) => {
-      
+
       for ( let i = 0; i < data2.length; i++) {
 
         if (this.data.cidade.length <= 0) {
@@ -219,7 +219,7 @@ chosenCity(event) {
   }
 
   validateCpfCnpj(): any {
-    
+
     this.validCnpj = false;
     this.validCpf = false;
 
@@ -235,67 +235,67 @@ chosenCity(event) {
   }
 
 
-  validarCPF(cpf): boolean {	
-    cpf = cpf.replace(/[^\d]+/g,'');	
-    if(cpf == '') return false;	
-    // Elimina CPFs invalidos conhecidos	
-    if (cpf.length != 11 || 
-      cpf == "00000000000" || 
-      cpf == "11111111111" || 
-      cpf == "22222222222" || 
-      cpf == "33333333333" || 
-      cpf == "44444444444" || 
-      cpf == "55555555555" || 
-      cpf == "66666666666" || 
-      cpf == "77777777777" || 
-      cpf == "88888888888" || 
+  validarCPF(cpf): boolean {
+    cpf = cpf.replace(/[^\d]+/g,'');
+    if(cpf == '') return false;
+    // Elimina CPFs invalidos conhecidos
+    if (cpf.length != 11 ||
+      cpf == "00000000000" ||
+      cpf == "11111111111" ||
+      cpf == "22222222222" ||
+      cpf == "33333333333" ||
+      cpf == "44444444444" ||
+      cpf == "55555555555" ||
+      cpf == "66666666666" ||
+      cpf == "77777777777" ||
+      cpf == "88888888888" ||
       cpf == "99999999999")
-        return false;		
-    // Valida 1o digito	
-    let add = 0;	
-    for (let i=0; i < 9; i ++)		
-      add += parseInt(cpf.charAt(i)) * (10 - i);	
-      let rev = 11 - (add % 11);	
-      if (rev == 10 || rev == 11)		
-        rev = 0;	
-      if (rev != parseInt(cpf.charAt(9)))		
-        return false;		
-    // Valida 2o digito	
-    add = 0;	
-    for (let i = 0; i < 10; i ++)		
-      add += parseInt(cpf.charAt(i)) * (11 - i);	
-    rev = 11 - (add % 11);	
-    if (rev == 10 || rev == 11)	
-      rev = 0;	
+        return false;
+    // Valida 1o digito
+    let add = 0;
+    for (let i=0; i < 9; i ++)
+      add += parseInt(cpf.charAt(i)) * (10 - i);
+      let rev = 11 - (add % 11);
+      if (rev == 10 || rev == 11)
+        rev = 0;
+      if (rev != parseInt(cpf.charAt(9)))
+        return false;
+    // Valida 2o digito
+    add = 0;
+    for (let i = 0; i < 10; i ++)
+      add += parseInt(cpf.charAt(i)) * (11 - i);
+    rev = 11 - (add % 11);
+    if (rev == 10 || rev == 11)
+      rev = 0;
     if (rev != parseInt(cpf.charAt(10)))
-      return false;		
-    
+      return false;
+
       this.validCpf = true;
-    return true;   
+    return true;
   }
 
   validarCNPJ(cnpj):boolean {
- 
+
     cnpj = cnpj.replace(/[^\d]+/g,'');
- 
+
     if(cnpj == '') return false;
-     
+
     if (cnpj.length != 14)
         return false;
- 
+
     // Elimina CNPJs invalidos conhecidos
-    if (cnpj == "00000000000000" || 
-        cnpj == "11111111111111" || 
-        cnpj == "22222222222222" || 
-        cnpj == "33333333333333" || 
-        cnpj == "44444444444444" || 
-        cnpj == "55555555555555" || 
-        cnpj == "66666666666666" || 
-        cnpj == "77777777777777" || 
-        cnpj == "88888888888888" || 
+    if (cnpj == "00000000000000" ||
+        cnpj == "11111111111111" ||
+        cnpj == "22222222222222" ||
+        cnpj == "33333333333333" ||
+        cnpj == "44444444444444" ||
+        cnpj == "55555555555555" ||
+        cnpj == "66666666666666" ||
+        cnpj == "77777777777777" ||
+        cnpj == "88888888888888" ||
         cnpj == "99999999999999")
         return false;
-         
+
     // Valida DVs
     let tamanho = cnpj.length - 2
     let numeros = cnpj.substring(0,tamanho);
@@ -310,7 +310,7 @@ chosenCity(event) {
     let resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
     if (resultado != digitos.charAt(0))
         return false;
-         
+
     tamanho = tamanho + 1;
     numeros = cnpj.substring(0,tamanho);
     soma = 0;
@@ -327,7 +327,7 @@ chosenCity(event) {
 
     this.validCnpj = true;;
     return true;
-    
+
 }
 
 verified() {
@@ -338,7 +338,7 @@ verified() {
   if (this.validNumber) {
     EventEmitterService.get(`errorEventToNumero`).emit(false);
   }
-  
+
   if (this.validBairro) {
     EventEmitterService.get(`errorEventToBairro`).emit(false);
   }
@@ -350,7 +350,7 @@ verified() {
   if (this.validTelefone) {
     EventEmitterService.get(`errorEventToTelefone`).emit(false);
   }
-  
+
   if (this.validLogradouro) {
     EventEmitterService.get(`errorEventToLogradouro`).emit(false);
   }
@@ -412,14 +412,14 @@ finish() {
 
 EventEmitterService.get('disableInputErrorEvent').emit();
 
-if (this.validName, 
-  this.validNumber, 
-  this.validCep, 
-  this.validBairro, 
+if (this.validName,
+  this.validNumber,
+  this.validCep,
+  this.validBairro,
   this.validCpf || this.validCnpj,
-  this.validTelefone, 
-  this.validLogradouro, 
-  this.validComplemento) 
+  this.validTelefone,
+  this.validLogradouro,
+  this.validComplemento)
   {
     this.router.navigateByUrl('/compra');
   }

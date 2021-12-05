@@ -1,161 +1,157 @@
-.main {
+$mobile-small-device: 321px;
+$mobile-medium-device: 600px;
+
+$primary-color: #057bda;
+$secondary-color: #5baef0;
+$tertiary-color: #fff;
+
+@mixin flex-align {
     display: flex;
-    background-color: #057bda;
-    width: 100%;
     align-items: center;
+}
+
+.main {
+    @include flex-align;
+    background-color: $primary-color;
+    width: 100%;
     justify-content: center;
     min-height: 75vh;
     min-width: 335px;
-}
+        @media (max-width: $mobile-small-device) {
+            min-width: 335px;
+            min-height: 95vh;
+        }
 
-.main_fadeIn {
-    max-width: 1000px;
-    margin: 0px 100px 0px 100px;
-    width: 100%;
-    animation: fadeIn ease-in 1s forwards;
-}
+    &__fadeIn {
+        max-width: 1000px;
+        margin: 0px 100px 0px 100px;
+        width: 100%;
+        animation: fadeIn ease-in 1s forwards;
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
     }
-    to {
-        opacity: 1;
-    }
 }
 
-.main_body {
-    display: flex;
-    align-items: center;
+.body {
+    @include flex-align;
     justify-content: center;
     flex-direction: column;
-}
 
-.content_image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    &__image {
+        @include flex-align;
+        justify-content: center;
 
-.content_image img {
-    width: 600px;
-}
+        & img {
+            width: 600px;
+                @media (max-width: $mobile-medium-device) {
+                    width: 300px;
+                }
+        }
+    }
 
-.content_text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    color: #ffffff;
-}
+    &__text {
+        @include flex-align;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        color: $tertiary-color;
 
-.content_title h1 {
-    position: relative;
-    font-family: 'Kiro-Regular';
-    font-weight: lighter;
-    font-size: 50px;
-    line-height: 50px;
-}
+        & h1 {
+            position: relative;
+            font-family: 'Kiro-Regular';
+            font-weight: lighter;
+            font-size: 50px;
+            line-height: 50px;
+                @media (max-width: $mobile-medium-device) {
+                    font-size: 30px;
+                    line-height: 40px;
+                }
 
-.content_title span {
-    font-family: 'Kiro-Extra-Bold';
-}
+            & span:first-of-type {
+                font-family: 'Kiro-Extra-Bold';
+            }
 
-.shadow {
-    position: absolute;
-    background-color: rgb(66, 161, 236);
-    height: 9px;
-    width: 420px;
-    border-radius: 10px;
-    top: 90px;
-    margin-left: -418px;
-    z-index: -1;
-}
+            & span:last-of-type {
+                position: absolute;
+                background-color: $secondary-color;
+                height: 9px;
+                width: 420px;
+                border-radius: 10px;
+                top: 90px;
+                margin-left: -418px;
+                z-index: -1;
+                    @media (max-width: $mobile-medium-device) {
+                        height: 7px;
+                        width: 255px;
+                        border-radius: 10px;
+                        top: 70px;
+                        margin-left: -253px;
+                    }
+            }
+        }
 
-.content_description p {
-    font-family: 'WorkSans-Regular';
-    margin-top: -20px;
-}
+        & p {
+            font-family: 'WorkSans-Regular';
+            margin-top: -20px;
+                @media (max-width: $mobile-medium-device) {
+                    margin-top: -10px;
+                    font-size: 13px;
+                }
+        }
+    }
 
+    &__button {
+        @include flex-align;
+        justify-content: center;
+        margin-top: 20px;
 
-.content_button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-}
+        & button {
+            font-family: "Poppins-SemiBold";
+            color: $primary-color;
+            background-color: $tertiary-color;
+            padding: 19px 70px;
+            border-radius: 100px;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            position: relative;
+            z-index: 2;
+                @media (max-width: $mobile-medium-device) {
+                    padding: unset;
+                    height: 60px;
+                    width: 280px;
+                    font-size: 13px;
+                }
+            
 
-.content_button button {
-    font-family: "Poppins-SemiBold";
-    color: #057bda;
-    background-color: #fefefe;
-    padding: 19px 70px;
-    border-radius: 100px;
-    border: none;
-    font-weight: bold;
-    font-size: 16px;
-    position: relative;
-    z-index: 2;
-}
+            &:hover {
+                box-shadow:  0 0 15px rgb(223, 223, 223);
+                cursor: pointer;
+            }
+        }
 
-.content_button button:hover {
-    box-shadow:  0 0 15px rgb(223, 223, 223);
-    cursor: pointer;
-}
-
-.content_button i {
-    position: relative;
-    color: #057bda;
-    right: 40px;
-    font-size: 19px;
-    top: 2px;
-    z-index: 2;
-}
-
-// ======================================> MOBILE =================================================
-
-@media screen and (max-width: 321px) { 
-    .main {
-        min-width: 335px;
-        min-height: 95vh;
+        & i {
+            position: relative;
+            color: $primary-color;
+            right: 40px;
+            font-size: 19px;
+            top: 2px;
+            z-index: 2;
+                @media (max-width: $mobile-medium-device) {
+                    right: 15px;
+                    top: 0;
+                    font-size: 15px;
+                }
+        }
     }
 }
 
-@media screen and (max-width: 600px) { 
 
-    .content_image img {
-        width: 300px;
-    }
 
-    .content_title h1 {
-        font-size: 30px;
-        line-height: 40px;
-    }
-    
-    .shadow {
-        height: 7px;
-        width: 255px;
-        border-radius: 10px;
-        top: 70px;
-        margin-left: -253px;
-    }
-
-    .content_description p {
-        margin-top: -10px;
-        font-size: 13px;
-    }
-
-    .content_button button {
-        padding: unset;
-        height: 60px;
-        width: 280px;
-        font-size: 13px;
-    }
-
-    .content_button i {
-        right: 15px;
-        top: 0;
-        font-size: 15px;
-    }
-}

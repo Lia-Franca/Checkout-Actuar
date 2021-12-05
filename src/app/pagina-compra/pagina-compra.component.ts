@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from 'stream';
+import { IProduct } from '../shared/interfaces/product.interface';
 import { EventEmitterService } from '../shared/services/event-emitter.service';
+import { ProductsService } from '../shared/services/products-service.service';
 
 @Component({
   selector: 'app-pagina-compra',
@@ -26,22 +28,7 @@ export class PaginaCompraComponent implements OnInit {
   isShown: boolean = false ; // Escondido por padrão
   public selectedOption: any = '';
 
-  products = [{
-  description: 'Catraca',
-  price: 4999,
-  checked: false,
-},
-{
-  description: 'Software',
-  price: 999,
-  checked: false,
-},
-{
-  description: 'Catraca + Software',
-  price: 5999,
-  checked: false,
-}
-]
+  public products: IProduct[] = []
 
 payments = [{
   description: 'Boleto à vista',
@@ -62,16 +49,24 @@ options: any[] = [];
 
 
 
-  constructor() { }
+  constructor(
+    private productsService: ProductsService
+  ) { }
 
   ngOnInit(){
     window.scrollTo({top: 0, behavior: 'smooth'});
-    this.products[2].checked = true;
 
-    for (let i: number = 1 ; i < this.installments+1; i++ ) {
-      this.options.push({option: `${i}x ${((this.products[2].price)/i).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`})
-      this.selectedOption = this.options[this.options.length - 1].option;
-    }
+
+    
+    this.productsService.getAllProducts().subscribe(products => {                 
+      console.log(products)
+      this.products = products;
+      this.products[2].checked = true;
+      }
+    )
+
+
+
   
     
   }
@@ -86,11 +81,10 @@ options: any[] = [];
 
     if (this.products[index].checked = true) {
       this.options = [];
-      for (let i: number = 1 ; i < this.installments+1; i++ ) {
-        this.options.push({option: `${i}x ${((this.products[index].price)/i).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`})
-        this.selectedOption = this.options[this.options.length - 1].option;
-      }
+      this.selectedOption = this.options[this.options.length - 1];
+
     }
+
 
   }
 
@@ -148,17 +142,6 @@ options: any[] = [];
       this.isInvalidCoupon = true;
     }
     
-    if(this.isValidCoupon) { 
-      for (let index: number = 0 ; index < this.products.length; index++ ) {
-        this.products[index].price = (this.products[index].price)*this.discountValue;
-        
-        this.options = [];
-        for (let i: number = 1 ; i < this.installments+1; i++ ) {
-          this.options.push({option: `${i}x ${((this.products[index].price)/i).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}`})
-          this.selectedOption = this.options[this.options.length - 1].option;
-        }
-      } 
-    }
 
   }
 

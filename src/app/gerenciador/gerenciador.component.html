@@ -1,0 +1,38 @@
+
+<div class="main">
+  <div class="main__fadeIn">
+    <div class="main-buttons">
+      <div class="header_title">
+        <h1><span>Gerenciadores</span><span></span></h1>
+      </div>
+      <div class="header_description">
+        <p>Escolha um gerenciador para visualizar, editar, excluir, ou cadastre um novo produto OU cupom.</p>
+      </div>
+      <div class="main-buttons__column">
+        <div class="main-buttons__row">
+
+          <button [routerLink]="['/gerenciador-produtos']">
+            <p>Produtos</p>
+          </button>
+  
+          <button [routerLink]="['/gerenciador-cupons']">
+            <p>Cupons</p> 
+          </button>
+
+        </div>
+        <div class="main-buttons__row">
+
+          <button [routerLink]="['/gerenciador-condicoes-pagamento']">
+            <p>Condições de Pagamento</p>
+          </button>
+          
+          <button [routerLink]="['/gerenciador-registros']">
+            <p>Registros</p> 
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

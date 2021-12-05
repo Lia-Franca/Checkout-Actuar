@@ -1,0 +1,140 @@
+$mobile-large-device: 900px;
+$mobile-medium-device: 601px;
+
+.main,
+.main_fadeIn,
+.header_title,
+.main-buttons,
+.main-buttons__column,
+.main-buttons__row,
+.button,
+.button_icon {
+    display: flex;
+    align-items: center;
+}
+
+.main {
+    justify-content: center;
+    background-color: #057bda;
+    width: 100%;
+    min-height: 75vh;
+    min-width: 335px;
+
+    &__fadeIn {
+        max-width: 1000px;
+        margin: 50px 100px 100px 100px;
+        width: 100%;
+        animation: fadeIn ease-in 1s forwards;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+
+.main-buttons {
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
+    & .shadow {
+        width: 308px;
+        margin-left: -308px;
+    }
+
+    & .main-buttons__column {
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+
+        & .main-buttons__row {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-direction: row;
+            width: 100%;
+
+            @media (max-width: $mobile-large-device) {
+                flex-direction: column;
+            }
+        }
+    }
+
+    &   button {
+        margin-top: 25px;
+        font-family: "Poppins-SemiBold";
+        color: #057bda;
+        background-color: #fefefe;
+        min-width: 283px;
+        height: 64px;
+        border-radius: 100px;
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    & button:hover {
+        box-shadow:  0 0 15px rgb(223, 223, 223);
+        cursor: pointer;
+    }
+
+}
+
+.header_title {
+    justify-content: center;
+    width: 100%;
+
+    & h1 {
+        font-family: 'Kiro-Regular';
+        font-size: 50px;
+        color: #fff;
+        font-weight: lighter;
+        letter-spacing: 2px;
+        @media (max-width: $mobile-large-device) {
+            font-size: 30px;
+        }
+
+        & span:first-of-type {
+            font-family: 'Kiro-Extra-Bold';
+        }
+
+        & span:last-of-type {
+            position: absolute;
+            background-color: #419fea;
+            height: 11px;
+            width: 312px;
+            border-radius: 10px;
+            margin-top: 45px;
+            margin-left: -310px ;
+            z-index: -1;
+            @media (max-width: $mobile-large-device) {
+                height: 8px;
+                width: 202px;
+                margin-left: -200px;
+                margin-top: 26px;
+            }
+        }
+    }
+}
+
+.header_description p {
+    font-family: 'WorkSans-Regular';
+    font-weight: lighter;
+    font-size: 16px;
+    color: #fff;
+    margin-top: -20px;
+    text-align: center;
+
+    @media (max-width: $mobile-large-device) {
+        font-size: 13px;
+        margin-top: -10px;
+    }
+}

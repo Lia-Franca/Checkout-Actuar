@@ -16,6 +16,4 @@ export class BuscaCepService {
     return this.httpClient.get(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${id}/municipios`)
   }
 
-
-
 }
